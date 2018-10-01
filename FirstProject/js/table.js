@@ -3,7 +3,7 @@ function addTableLeg(obj, x, y, z) {
 
     geometry = new THREE.CylinderGeometry(1.5, 1.5,35,10);
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x, y+11.5, z);
+    mesh.position.set(x, y+10.5, z);
     obj.add(mesh);
 }
 
@@ -11,7 +11,7 @@ function addTableTop(obj, x, y, z) {
     'use strict';
     geometry = new THREE.CubeGeometry(55, 2, 33);
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x, y+27, z);
+    mesh.position.set(x, y+26, z);
     obj.add(mesh);
 }
 
