@@ -24,14 +24,14 @@ function addChairLeg(obj, x, y, z) {
 
 function addChairCubeWheels1(obj, x, y, z) {
     'use strict';
-    geometry = new THREE.CubeGeometry(1, 1, 7);
+    geometry = new THREE.CubeGeometry(1, 1, 10);
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y, z);
     obj.add(mesh);
 }
 function addChairCubeWheels2(obj, x, y, z) {
     'use strict';
-    geometry = new THREE.CubeGeometry(7, 1, 1);
+    geometry = new THREE.CubeGeometry(10, 1, 1);
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y, z);
     obj.add(mesh);
@@ -75,9 +75,8 @@ function createChair(x, y, z) {
     addChairTop(chair,-4,9,0);
     addChairCubeWheels1(chair,0,-3,0);
     addChairCubeWheels2(chair,0,-3,0);
-    //addChairCubeWheels(chair,0,-3,0);
-    addChairWheels(chair,4,-5,0);
-    //addChairWheels(chair,0,-7,0);
+    addChairWheels(chair,5,0,-0.5);
+    addChairWheels(chair,5,0,0.5);
 
    
     scene.add(chair);
