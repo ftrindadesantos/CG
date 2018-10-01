@@ -12,6 +12,7 @@ function createScene() {
     
     createTable(0, 8, 0);
     createLamp(10,0,10);
+    createChair(0, 4, 30);
 }
 
 function createCamera(x,y,z) {
