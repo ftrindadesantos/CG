@@ -11,7 +11,7 @@ function createScene() {
     scene.add(new THREE.AxisHelper(10));
     
     createTable(0, 8, 0);
-    createLamp(10,8,9);
+    createLamp(10,0,10);
 }
 
 function createCamera(x,y,z) {
