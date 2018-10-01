@@ -16,7 +16,7 @@ function createScene() {
 
 function createCamera(x,y,z) {
     'use strict';
-    camera = new THREE.OrthographicCamera(60*(window.innerWidth / window.innerHeight)/-2,60*(window.innerWidth / window.innerHeight)/2,60*(window.innerWidth / window.innerHeight)/2,60*(window.innerWidth / window.innerHeight)/-2,1,1000);
+    camera = new THREE.OrthographicCamera(100*(window.innerWidth / window.innerHeight)/-2,100*(window.innerWidth / window.innerHeight)/2,100*(window.innerWidth / window.innerHeight)/2,100*(window.innerWidth / window.innerHeight)/-2,1,1000);
     camera.position.x = x;
     camera.position.y = y;
     camera.position.z = z;
@@ -57,16 +57,16 @@ function onKeyDown(e) {
         });
         break;
     case 49: //1
-    	createCamera(0,60,0);
+    	createCamera(0,100,0);
     	break;
     case 50: //2
-    	createCamera(0,0,60);
+    	createCamera(0,0,100);
     	break;
     case 51: //3
-    	createCamera(60,0,0);
+    	createCamera(100,0,0);
     	break;
     case 52: //4 CAMERA PRINCIPAL
-    	createCamera(60,60,60);
+    	createCamera(100,100,100);
     	break;
 
  
@@ -87,7 +87,7 @@ function init() {
     document.body.appendChild(renderer.domElement);
    
     createScene();
-    createCamera(60,60,60);
+    createCamera(100,100,100);
 
     
     render();
