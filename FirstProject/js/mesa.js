@@ -9,7 +9,7 @@ var ball;
 function addTableLeg(obj, x, y, z) {
     'use strict';
 
-    geometry = new THREE.CylinderGeometry(1, 1, 10,10);
+    geometry = new THREE.CylinderGeometry(1, 1, 70,10);
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y - 3, z);
     obj.add(mesh);
@@ -17,7 +17,7 @@ function addTableLeg(obj, x, y, z) {
 
 function addTableTop(obj, x, y, z) {
     'use strict';
-    geometry = new THREE.CubeGeometry(60, 2, 20);
+    geometry = new THREE.CubeGeometry(50, 2, 30);
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y, z);
     obj.add(mesh);
