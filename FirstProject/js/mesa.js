@@ -41,11 +41,30 @@ function addChairTop(obj, x, y, z) {
 function addChairLeg(obj, x, y, z) {
     'use strict';
 
-    geometry = new THREE.CylinderGeometry(0.5, 0.5, 8,10);
+    geometry = new THREE.CylinderGeometry(2.5, 1.5, 7,10);
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y - 3, z);
     obj.add(mesh);
 }
+
+function addChairCubeWheels(obj, x, y, z) {
+    'use strict';
+    geometry = new THREE.CubeGeometry(7, 1, 1);
+    mesh = new THREE.Mesh(geometry, material);
+    mesh.position.set(x, y, z);
+    obj.add(mesh);
+}
+
+
+function addChairWheels(obj, x, y, z) {
+    'use strict';
+
+    geometry = new THREE.TorusGeometry(0.8, 0.3,10 ,30);
+    mesh = new THREE.Mesh(geometry, material);
+    mesh.position.set(x, y - 3, z);
+    obj.add(mesh);
+}
+
 
 function createBall(x, y, z) {
     'use strict';
@@ -73,6 +92,10 @@ function createChair(x, y, z) {
     addChairSeat(chair, 0, 3, 0);
     addChairLeg(chair, 0, 3, 0);
     addChairTop(chair,-4,9,0);
+    addChairCubeWheels(chair,0,-3,0);
+    //addChairCubeWheels(chair,0,-3,0);
+    addChairWheels(chair,4,-5,0);
+    //addChairWheels(chair,0,-7,0);
 
    
     scene.add(chair);
@@ -177,6 +200,8 @@ function onKeyDown(e) {
     case 52: //4 CAMERA PRINCIPAL
     	createCamera(50,50,50);
     	break;
+
+ 
     }
 }
 
@@ -207,12 +232,6 @@ function init() {
 
 function animate() {
     'use strict';
-    
-    if (ball.userData.jumping) {
-        ball.userData.step += 0.04;
-        ball.position.y = Math.abs(30 * (Math.sin(ball.userData.step)));
-        ball.position.z = 15 * (Math.cos(ball.userData.step));
-    }
     render();
     
     requestAnimationFrame(animate);
