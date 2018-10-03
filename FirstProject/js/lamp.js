@@ -46,8 +46,18 @@ function addLampCone(obj, x,y,z) {
     obj.add(mesh);
 }
 
+function addLampJunction2(obj, x,y,z) {
+    'use strict';
+    geometry = new THREE.SphereGeometry(2, 10, 10);
+    mesh = new THREE.Mesh(geometry, material);
+    mesh.position.set(x, y, z);
+
+    obj.add(mesh);
+}
+
 function addLampBulb(obj, x,y,z) {
     'use strict';
+    material = new THREE.MeshBasicMaterial({ color: 0xf3ff1e, wireframe: true });
     geometry = new THREE.SphereGeometry(2, 10, 10);
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y, z);
@@ -68,7 +78,8 @@ function createLamp(x, y, z) {
     addLampJunction(lamp, x,y + 32,z);
     addLampJunction(lamp,x-9, y + 60, z+8.2);
     addLampCone(lamp,x-9, y + 60, z + 8.2);
-    addLampBulb(lamp,x-9, y+ 60, z + 8.2);
+    addLampJunction2(lamp,x-9, y+ 60, z + 8.2);
+    addLampBulb(lamp,x-12.5, y+ 50.5, z + 7.2);
 
     scene.add(lamp);
     
