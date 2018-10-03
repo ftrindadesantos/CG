@@ -62,25 +62,43 @@ function createBall(x, y, z) {
     
     scene.add(ball);
 }
+  
 
-function createChair(x, y, z) {
+function createChairTop(x, y, z) {
     'use strict';
     
     var chair = new THREE.Object3D();
     
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
-   
+    
     addChairSeat(chair, 0, 3, 0);
-    addChairLeg(chair, 0, 3, 0);
     addChairTop(chair,-4,9,0);
+   
+    scene.add(chair);
+
+    
+    chair.position.x = x;
+    chair.position.y = y;
+    chair.position.z = z;
+}
+
+
+function createChairBottom(x, y, z) {
+    'use strict';
+    
+    var chair = new THREE.Object3D();
+    
+    
+    addChairLeg(chair, 0, 3, 0);
     addChairCubeWheels1(chair,0,-3,0);
     addChairCubeWheels2(chair,0,-3,0);
     addChairWheels(chair,5,0,-0.5);
     addChairWheels(chair,5,0,0.5);
     addChairWheels(chair,-5,0,0.5);
     addChairWheels(chair,-5,0,-0.5);
-    addChairWheels(chair,0,0,5);
-    addChairWheels(chair,0,0,-5);
+    addChairWheels(chair,0,0,5.5);
+    addChairWheels(chair,0,0,4.5);
+    addChairWheels(chair,0,0,-5.5);
+    addChairWheels(chair,0,0,-4.5);
 
    
     scene.add(chair);
@@ -89,4 +107,13 @@ function createChair(x, y, z) {
     chair.position.x = x;
     chair.position.y = y;
     chair.position.z = z;
+}
+
+function createChair(x, y, z) {
+    'use strict';
+    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+   
+    createChairBottom(x, y, z);
+     createChairTop(x, y, z);
+      
 }
