@@ -20,7 +20,7 @@ function createTable(x, y, z) {
     
     var table = new THREE.Object3D();
     
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+    material = new THREE.MeshBasicMaterial({ color: 0x826032, wireframe: true });
    
     addTableTop(table, 0, 0, 0);
     addTableLeg(table, -26, -1, -15);

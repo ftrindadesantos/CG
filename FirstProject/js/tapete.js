@@ -11,7 +11,7 @@ function createTapete(x, y, z) {
     
     var tapete = new THREE.Object3D();
     
-    material = new THREE.MeshBasicMaterial( {color: 0x111110, side: THREE.DoubleSide} );
+    material = new THREE.MeshBasicMaterial( {color: 0x555556, wireframe: true} );
 
     addTapete(tapete, 0, 0, 0);
 

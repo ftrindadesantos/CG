@@ -1,5 +1,8 @@
 function addChairSeat(obj, x, y, z) {
     'use strict';
+
+    material = new THREE.MeshBasicMaterial({ color: 0x2a2a6d, wireframe: true });
+
     geometry = new THREE.CubeGeometry(15, 3, 15);
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y+12, z);
@@ -7,6 +10,9 @@ function addChairSeat(obj, x, y, z) {
 }
 function addChairTop(obj, x, y, z) {
     'use strict';
+
+    material = new THREE.MeshBasicMaterial({ color: 0x2a2a6d, wireframe: true });
+    
     geometry = new THREE.CubeGeometry(3, 25, 15);
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x-2, y+20, z);
@@ -111,7 +117,7 @@ function createChairBottom(x, y, z) {
 
 function createChair(x, y, z) {
     'use strict';
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+    material = new THREE.MeshBasicMaterial({ color: 0xbfbc9c, wireframe: true });
    
     createChairBottom(x, y, z);
      createChairTop(x, y, z);

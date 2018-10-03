@@ -60,7 +60,7 @@ function createLamp(x, y, z) {
     
     var lamp = new THREE.Object3D();
     
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+    material = new THREE.MeshBasicMaterial({ color: 0xe5e3cc, wireframe: true });
 
     addLampBase(lamp, x,y-1,z);
     addLampPole(lamp, x,y+16,z);
