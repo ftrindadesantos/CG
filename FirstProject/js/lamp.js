@@ -79,7 +79,7 @@ function createLamp(x, y, z) {
     addLampJunction(lamp,x-9, y + 60, z+8.2);
     addLampCone(lamp,x-9, y + 60, z + 8.2);
     addLampJunction2(lamp,x-9, y+ 60, z + 8.2);
-    addLampBulb(lamp,x-12.5, y+ 50.5, z + 7.2);
+    addLampBulb(lamp,x-12.25, y+ 50.5, z + 7.2);
 
     scene.add(lamp);
     
