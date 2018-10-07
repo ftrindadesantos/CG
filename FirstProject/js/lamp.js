@@ -76,7 +76,7 @@ function createLamp(x, y, z) {
     addLampPole(lamp, x,y+16,z);
     addLampPoleRot(lamp, x,y + 48,z);
     addLampJunction(lamp, x,y + 32,z);
-    addLampJunction(lamp,x-9, y + 60, z+8.2);
+    addLampJunction(lamp,x-9, y + 60, z+8.7);
     addLampCone(lamp,x-9, y + 60, z + 8.2);
     addLampJunction2(lamp,x-9, y+ 60, z + 8.2);
     addLampBulb(lamp,x-12.25, y+ 50.5, z + 7.2);
