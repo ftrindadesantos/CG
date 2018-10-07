@@ -1,4 +1,4 @@
-var camera, scene, renderer;
+var camera, scene, renderer, chair, chairTop, chairBottom;
 
 var geometry, material, mesh;
 
@@ -7,11 +7,22 @@ function createScene() {
     
     scene = new THREE.Scene();
     
-
     scene.add(new THREE.AxisHelper(10));
+
+
+    chair = new THREE.Object3D();
+    chairBottom = new THREE.Object3D();
+    chairTop = new THREE.Object3D();
+
+    chair.add(chairTop);
+    chair.add(chairBottom);
+
+    scene.add(chair);
+
+    createChairTop(0, 4, 30);
+    createChairBottom(0, 4, 30);
     
     createTable(0, 8, 0);
-    createChair(0, 4, 30);
     createLamp(15,0.7,-3);
     createTapete(0,0,0);
 }
@@ -51,7 +62,8 @@ function init() {
     });
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
-   
+
+
     createScene();
     createCamera(100,100,100);
 
