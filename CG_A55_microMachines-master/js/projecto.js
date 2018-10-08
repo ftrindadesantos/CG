@@ -130,7 +130,7 @@ function createCar(x, y, z) {
 
     createCarCamera();
 
-    car.rotateY(Math.PI/2);
+    //car.rotateY(Math.PI/2);
     car.position.x = x;
     car.position.y = y;
     car.position.z = z;

@@ -16,7 +16,6 @@ function onKeyDown(e) {
     case 69:  //E
     case 101: //e 
         scene.traverse(function (node) {
-            chairTop.rotateY(Math.PI / 1000);
             if (node instanceof THREE.AxisHelper) {
                 node.visible = !node.visible;
             }
