@@ -1,8 +1,10 @@
-var camera, scene, renderer, chair, chairTop, chairBottom;
+var camera, scene, renderer, chair, chairTop, chairBottom, speed=1;
 
 const clock = new THREE.Clock();
 
 var geometry, material, mesh;
+
+var rotX, rotZ;
 
 function createScene() {
     'use strict';
@@ -19,11 +21,12 @@ function createScene() {
     chair.add(chairTop);
     chair.add(chairBottom);
 
-    scene.add(chair);
+    chair.position.set(0, 4, 30);
 
-    createChairTop(0, 4, 30);
-    createChairBottom(0, 4, 30);
-    
+    createChairTop(0, 0, 0);
+    createChairBottom(0, 0, 0);
+        scene.add(chair);
+
     createTable(0, 8, 0);
     createLamp(15,0.7,-3);
     createTapete(0,0,0);
@@ -80,15 +83,29 @@ function init() {
 
 function animateChairTop(acceleration, delta) {
     'use strict';
+    //console.log(acceleration, delta);
+    if(chairTop.userData.direction.x != 0){
+     newSpeed(acceleration, delta);      
+     getNewPosition(chairTop);
 
-    //newSpeed(acceleration, delta);
+    }
     
     if (chairTop.userData.left) {
-        chairTop.rotateY(Math.PI / 40);
+        chairTop.rotateY(Math.PI / 40); 
     } else if (chairTop.userData.right) {
         chairTop.rotateY(-Math.PI / 40);
     }
 }
+
+function getNewPosition(obj) {
+    'use strict';
+
+    var speed = obj.userData.speed;
+    chair.translateX(speed * Math.cos(chairTop.rotation.y)) ;
+    chair.translateZ(speed * Math.sin(chairTop.rotation.y)) ;
+}
+
+
 
 function newSpeed(acceleration, delta) {
     'use strict';
@@ -96,7 +113,7 @@ function newSpeed(acceleration, delta) {
     var vel_max = 0.5;
 
     if (!chairTop.userData.stopping && chairTop.userData.speed < vel_max) {
-        var new_speed = c.userData.speed + acceleration * delta;
+        var new_speed = chairTop.userData.speed + acceleration * delta;
         if (new_speed > vel_max)
             chairTop.userData.speed = vel_max;
         else

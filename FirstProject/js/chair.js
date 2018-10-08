@@ -13,12 +13,7 @@ function addChairTop(obj, x, y, z) {
 
     material = new THREE.MeshBasicMaterial({ color: 0x2a2a6d, wireframe: true });
     
-    chair.userData = {direction: new THREE.Vector3(0, 0, 0),
-                    speed: 0,
-                    left: false,
-                    right: false,
-                    stopping: false};
-
+    
     
     geometry = new THREE.CubeGeometry(3, 25, 15);
     mesh = new THREE.Mesh(geometry, material);
@@ -66,16 +61,17 @@ function createChairTop(x, y, z) {
     
     var chair = new THREE.Object3D();
     material = new THREE.MeshBasicMaterial({ color: 0xbfbc9c, wireframe: true });
-    
 
-    chair.userData = {direction: new THREE.Vector3(0, 0, 0),
+
+
+    chairTop.userData = {direction: new THREE.Vector3(0,0,0),
                     speed: 0,
                     left: false,
                     right: false,
                     stopping: false};
 
 
-    addChairSeat(chair, 0, 3, 0);
+    addChairSeat(chair, 0, 3,0);
     addChairTop(chair,-4,9,0);
    
     chairTop.add(chair);

@@ -744,6 +744,8 @@ function animate() {
 function animateCar(acceleration, delta) {
     'use strict';
 
+    console.log(acceleration, delta);
+    
     if (car.userData.direction.x !== 0) {
         newSpeed(acceleration, delta);
         getNewPosition(car);

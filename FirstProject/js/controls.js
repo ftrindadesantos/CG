@@ -9,9 +9,17 @@ function onKeyDown(e) {
         //chairTop.rotateY(Math.PI / -50);     
         break;
     case 38:
-        chair.translateX(10);
+        if (chairTop.userData.direction.x === -1 && chairTop.userData.speed !== 0) {
+            chairTop.userData.stopping = true;
+        } else if (chairTop.userData.speed === 0) {
+            chairTop.userData.stopping = false;
+            chairTop.userData.direction.setX(1);
+        } else {
+            chairTop.userData.stopping = false;
+        }
         break;
     case 39: //RIGHT
+        console.log(chairTop.userData.direction);
         chairTop.userData.right = true;
         chairTop.userData.left = false;
         //chairTop.rotateY(Math.PI / 50);     
