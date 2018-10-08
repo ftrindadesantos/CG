@@ -1,5 +1,7 @@
 var camera, scene, renderer, chair, chairTop, chairBottom;
 
+const clock = new THREE.Clock();
+
 var geometry, material, mesh;
 
 function createScene() {
@@ -111,6 +113,13 @@ function newSpeed(acceleration, delta) {
 
 function animate() {
     'use strict';
+
+    const acceleration = 0.5;
+    const delta = clock.getDelta();
+
+    animateChairTop(acceleration, delta);
+
+
     render();
     
     requestAnimationFrame(animate);
