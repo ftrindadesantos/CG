@@ -72,20 +72,21 @@ function init() {
     
     render();
     
-    window.addEventListener("keydown", onKeyDown);    
+
     window.addEventListener("resize", onResize);
+    window.addEventListener("keydown", onKeyDown);    
+    window.addEventListener("keyup", onKeyUp);
 }
 
 function animateChairTop(acceleration, delta) {
     'use strict';
 
-    if (chairTop.userData.direction.x !== 0) {
-        newSpeed(acceleration, delta);
-    }
+    //newSpeed(acceleration, delta);
+    
     if (chairTop.userData.left) {
-        car.rotateY(Math.PI / 40);
+        chairTop.rotateY(Math.PI / 40);
     } else if (chairTop.userData.right) {
-        car.rotateY(-Math.PI / 40);
+        chairTop.rotateY(-Math.PI / 40);
     }
 }
 

@@ -3,13 +3,18 @@ function onKeyDown(e) {
     
     switch (e.keyCode) {
     case 37: //LEFT
-        chairTop.rotateY(Math.PI / -50);     
+        chairTop.userData.right = false;
+        chairTop.userData.left = true;
+
+        //chairTop.rotateY(Math.PI / -50);     
         break;
     case 38:
         chair.translateX(10);
         break;
     case 39: //RIGHT
-        chairTop.rotateY(Math.PI / 50);     
+        chairTop.userData.right = true;
+        chairTop.userData.left = false;
+        //chairTop.rotateY(Math.PI / 50);     
         break;
     case 40:
         chair.translateX(-10);
@@ -26,7 +31,11 @@ function onKeyDown(e) {
     case 83:  //S
     case 69:  //E
     case 101: //e 
-        chairTop.rotateY(Math.PI / 50);
+         scene.traverse(function (node) {
+            if (node instanceof THREE.AxisHelper) {
+                node.visible = !node.visible;
+            }
+        });
         
         break;
     case 49: //1
@@ -46,4 +55,31 @@ function onKeyDown(e) {
     }
 
 
+}
+
+function onKeyUp (e){
+    'use strict';
+    switch (e.keyCode) {
+
+    case 38: // up
+        if ( !chairTop.userData.stopping) {
+            chairTop.userData.stopping = true;
+        }
+        break;
+
+    case 40: // down
+        if ( !chairTop.userData.stopping) {
+            chairTop.userData.stopping = true;
+        }
+        break;
+
+    case 37: //left
+        console.log(chairTop.userData.left);
+        chairTop.userData.left = false;
+        break;
+
+    case 39: //right
+        chairTop.userData.right = false;
+        break;
+    }
 }
