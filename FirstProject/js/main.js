@@ -97,12 +97,42 @@ function animateChairTop(acceleration, delta) {
     }
 }
 
+function toDegrees(radians) {
+    return radians * 180 / Math.PI;
+}
+
 function getNewPosition(obj) {
     'use strict';
 
     var speed = obj.userData.speed;
-    chair.translateX(speed * Math.cos(chairTop.rotation.y)) ;
-    chair.translateZ(speed * Math.sin(chairTop.rotation.y)) ;
+    var directionX, directionZ;
+    var angle = toDegrees(chairTop.rotation.y);
+    console.log(angle);
+
+
+    if(angle < 90 && angle > 0 ){
+        console.log("1Q"); 
+        directionX = Math.cos(chairTop.rotation.y); 
+        directionZ= -Math.sin(chairTop.rotation.y);}
+
+    if(angle < 180 && angle > 90 ){
+        console.log("2Q");
+        directionX = Math.cos(chairTop.rotation.y);
+        directionZ = -Math.sin(chairTop.rotation.y);}
+
+    if(angle < -180 && angle > -90 ){
+        console.log("3Q");
+        directionX = -Math.cos(chairTop.rotation.y);
+        directionZ = Math.sin(chairTop.rotation.y);}
+
+    if(angle < 0 && angle > -90 ){
+        console.log("4Q");
+        directionX = -Math.cos(chairTop.rotation.y);
+        directionZ = Math.sin(chairTop.rotation.y);}
+
+
+    chair.translateX(speed * directionX) ;
+    chair.translateZ(speed * directionZ) ;
 }
 
 
