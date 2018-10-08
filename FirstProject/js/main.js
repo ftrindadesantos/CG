@@ -25,7 +25,8 @@ function createScene() {
 
     createChairTop(0, 0, 0);
     createChairBottom(0, 0, 0);
-        scene.add(chair);
+
+    scene.add(chair);
 
     createTable(0, 8, 0);
     createLamp(15,0.7,-3);
@@ -85,8 +86,8 @@ function animateChairTop(acceleration, delta) {
     'use strict';
     //console.log(acceleration, delta);
     if(chairTop.userData.direction.x != 0){
-     newSpeed(acceleration, delta);      
-     getNewPosition(chairTop);
+     updateVel(acceleration, delta);      
+     updatePosition(chairTop);
 
     }
     
@@ -97,47 +98,19 @@ function animateChairTop(acceleration, delta) {
     }
 }
 
-function toDegrees(radians) {
-    return radians * 180 / Math.PI;
-}
 
-function getNewPosition(obj) {
+
+function updatePosition(obj) {
     'use strict';
 
     var speed = obj.userData.speed;
-    var directionX, directionZ;
-    var angle = toDegrees(chairTop.rotation.y);
-    console.log(angle);
-
-
-    if(angle < 90 && angle > 0 ){
-        console.log("1Q"); 
-        directionX = Math.cos(chairTop.rotation.y); 
-        directionZ= -Math.sin(chairTop.rotation.y);}
-
-    if(angle < 180 && angle > 90 ){
-        console.log("2Q");
-        directionX = Math.cos(chairTop.rotation.y);
-        directionZ = -Math.sin(chairTop.rotation.y);}
-
-    if(angle < -180 && angle > -90 ){
-        console.log("3Q");
-        directionX = -Math.cos(chairTop.rotation.y);
-        directionZ = Math.sin(chairTop.rotation.y);}
-
-    if(angle < 0 && angle > -90 ){
-        console.log("4Q");
-        directionX = -Math.cos(chairTop.rotation.y);
-        directionZ = Math.sin(chairTop.rotation.y);}
-
-
-    chair.translateX(speed * directionX) ;
-    chair.translateZ(speed * directionZ) ;
+    chair.translateX(speed * Math.cos(chairTop.rotation.y)) ;
+    chair.translateZ(speed * Math.sin(chairTop.rotation.y)) ;
 }
 
 
 
-function newSpeed(acceleration, delta) {
+function updateVel(acceleration, delta) {
     'use strict';
 
     var vel_max = 0.5;

@@ -8,7 +8,7 @@ function addChairSeat(obj, x, y, z) {
     mesh.position.set(x, y+12, z);
     obj.add(mesh);
 }
-function addChairTop(obj, x, y, z) {
+function addChairBack(obj, x, y, z) {
     'use strict';
 
     material = new THREE.MeshBasicMaterial({ color: 0x2a2a6d, wireframe: true });
@@ -72,7 +72,7 @@ function createChairTop(x, y, z) {
 
 
     addChairSeat(chair, 0, 3,0);
-    addChairTop(chair,-4,9,0);
+    addChairBack(chair,-4,9,0);
    
     chairTop.add(chair);
 

@@ -4,12 +4,10 @@ function onKeyDown(e) {
     switch (e.keyCode) {
     case 37: //LEFT
         chairTop.userData.right = false;
-        chairTop.userData.left = true;
-
-        //chairTop.rotateY(Math.PI / -50);     
+        chairTop.userData.left = true;  
         break;
-    case 38:
-        if (chairTop.userData.direction.x === -1 && chairTop.userData.speed !== 0) {
+    case 38: //UP
+        if (chairTop.userData.direction.x === 1 && chairTop.userData.speed !== 0) {
             chairTop.userData.stopping = true;
         } else if (chairTop.userData.speed === 0) {
             chairTop.userData.stopping = false;
@@ -19,13 +17,19 @@ function onKeyDown(e) {
         }
         break;
     case 39: //RIGHT
-        console.log(chairTop.userData.direction);
+        
         chairTop.userData.right = true;
-        chairTop.userData.left = false;
-        //chairTop.rotateY(Math.PI / 50);     
+        chairTop.userData.left = false;   
         break;
-    case 40:
-        chair.translateX(-10);
+    case 40: //DOWN
+        if (chairTop.userData.direction.x === 1 && chairTop.userData.speed !== 0) {
+            chairTop.userData.stopping = true;
+        } else if (chairTop.userData.speed === 0) {
+            chairTop.userData.stopping = false;
+            chairTop.userData.direction.setX(-1);
+        } else {
+            chairTop.userData.stopping = false;
+        }
         break;
     case 65: //A
     case 97: //a
@@ -82,7 +86,6 @@ function onKeyUp (e){
         break;
 
     case 37: //left
-        console.log(chairTop.userData.left);
         chairTop.userData.left = false;
         break;
 
