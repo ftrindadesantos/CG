@@ -6,7 +6,8 @@ function onKeyDown(e) {
         chairTop.rotateY(Math.PI / -50);     
         break;
     case 38:
-        chair.translateX(10);
+        chair.translateX(chairTop.userData.direction.getComponent(0) * speed);
+        chair.translateZ(chairTop.userData.direction.getComponent(2) * speed);
         break;
     case 39: //RIGHT
         chairTop.rotateY(Math.PI / 50);     
