@@ -2,11 +2,22 @@ function onKeyDown(e) {
     'use strict';
     
     switch (e.keyCode) {
+    case 37: //LEFT
+        chairTop.rotateY(Math.PI / -50);     
+        break;
+    case 38:
+        chair.translateX(10);
+        break;
+    case 39: //RIGHT
+        chairTop.rotateY(Math.PI / 50);     
+        break;
+    case 40:
+        chair.translateX(-10);
+        break;
     case 65: //A
     case 97: //a
         scene.traverse(function (node) {
             if (node instanceof THREE.Mesh) {
-
                 node.material.wireframe = !node.material.wireframe;
             }
         });
@@ -15,12 +26,8 @@ function onKeyDown(e) {
     case 83:  //S
     case 69:  //E
     case 101: //e 
-        scene.traverse(function (node) {
-            chairTop.rotateY(Math.PI / 1000);
-            if (node instanceof THREE.AxisHelper) {
-                node.visible = !node.visible;
-            }
-        });
+        chairTop.rotateY(Math.PI / 50);
+        
         break;
     case 49: //1
     	createCamera(0,100,0);
