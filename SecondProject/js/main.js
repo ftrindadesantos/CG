@@ -45,9 +45,18 @@ function createOrthoCamera() {
 
 function createFollowPrespectiveCamera(){
 	'use strict'
-    
 
+    var aspect_ratio = window.innerWidth / window.innerHeight;
+    var fov = 90;
+    var near = 1;
+    var far = 50;
 
+    follow_camera = new THREE.PerspectiveCamera(fov, aspect_ratio, near, far);
+    follow_camera.position.x = -20;
+    follow_camera.position.y = 20;
+    follow_camera.position.z = 0;
+    follow_camera.lookAt(firstBall.position);
+    firstBall.add(follow_camera);
 
 
 }
@@ -107,28 +116,14 @@ function createScene() {
     //createChairBottom(0, 0, 0);
 
     //scene.add(chair);
-
-
- 	ortho_camera = createOrthoCamera();
-    prespect_camera = createPrespectiveCamera();
-
     
-    firstBall = new THREE.Object3D();
-    follow_camera = new THREE.Object3D();
- 
-
-
-    firstBall.add(follow_camera);
-
-    follow_camera = createFollowPrespectiveCamera();
-
-
-    camera = ortho_camera;
     createFirstBall();
-
-    scene.add(firstBall);
     createField(0,0,0);
     createBalls();
+
+    ortho_camera = createOrthoCamera();
+    prespect_camera = createPrespectiveCamera();
+    camera = ortho_camera;
     
 
 }
@@ -137,20 +132,22 @@ function createFirstBall(){
 
     'use strict';
 
-    var ball = new THREE.Object3D();
+    firstBall = new THREE.Object3D();
 
     material = new THREE.MeshBasicMaterial({ color: 0xff00ff, wireframe: true });
 
-    addBall(ball, 0, 5.6, 0);
+    addBall(firstBall, 0, 5.6, 0);
 
-    firstBall.add(ball);
+    createFollowPrespectiveCamera();
 
     var x = Math.random()*33.8 - 16.9;
     var z = Math.random()*83.8 - 41.9;
 
-    ball.position.x = x;
-    ball.position.y = 0;
-    ball.position.z = z;
+    firstBall.position.x = x;
+    firstBall.position.y = 0;
+    firstBall.position.z = z;
+
+    scene.add(firstBall);
 
 }
 
