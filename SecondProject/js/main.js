@@ -1,4 +1,4 @@
-var camera, scene, renderer, chair, chairTop, chairBottom, speed=1;
+var camera, scene, renderer, chair, chairTop, chairBottom, speed=1, firstBall;
 
 
 var ortho_camera, prespect_camera, follow_camera;
@@ -45,6 +45,7 @@ function createOrthoCamera() {
 
 function createFollowPrespectiveCamera(){
 	'use strict'
+    
 
 
 
@@ -110,20 +111,53 @@ function createScene() {
 
  	ortho_camera = createOrthoCamera();
     prespect_camera = createPrespectiveCamera();
-    follow_camera = createFollowPrespectiveCamera();
+
     
+    firstBall = new THREE.Object3D();
+    follow_camera = new THREE.Object3D();
+ 
+
+
+    firstBall.add(follow_camera);
+
+    follow_camera = createFollowPrespectiveCamera();
 
 
     camera = ortho_camera;
+    createFirstBall();
+
+    scene.add(firstBall);
     createField(0,0,0);
-    createBall(0,0,0);
+    createBalls();
     
+
+}
+
+function createFirstBall(){
+
+    'use strict';
+
+    var ball = new THREE.Object3D();
+
+    material = new THREE.MeshBasicMaterial({ color: 0xff00ff, wireframe: true });
+
+    addBall(ball, 0, 5.6, 0);
+
+    firstBall.add(ball);
+
+    var x = Math.random()*33.8 - 16.9;
+    var z = Math.random()*83.8 - 41.9;
+
+    ball.position.x = x;
+    ball.position.y = 0;
+    ball.position.z = z;
 
 }
 
 function addBall(obj, x, y, z){
 
     'use strict';
+    var vector = new THREE.Vector3(Math.random()*2-1, 0 , Math.random()*2-1);
     geometry = new THREE.SphereGeometry(5.6, 10, 10);
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y, z);
@@ -139,8 +173,17 @@ function addBall(obj, x, y, z){
 
 }
 
+function createBalls(){
 
-function createBall(x, y, z){
+   for (var i = 0; i < 9; i++) {
+       createBall();
+   }
+
+}
+
+
+
+function createBall(){
     'use strict';
 
     var ball = new THREE.Object3D();
@@ -151,9 +194,13 @@ function createBall(x, y, z){
 
     scene.add(ball);
 
+    var x = Math.random()*33.8 - 16.9;
+    var z = Math.random()*83.8 - 41.9;
+
     ball.position.x = x;
-    ball.position.y = y;
+    ball.position.y = 0;
     ball.position.z = z;
+
 
 }
 
