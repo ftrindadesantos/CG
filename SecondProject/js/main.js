@@ -27,8 +27,49 @@ function createScene() {
 
     //scene.add(chair);
 
+    
     createField(0,0,0);
+    createBall(0,0,0);
+    
+
 }
+
+function addBall(obj, x, y, z){
+
+    'use strict';
+    geometry = new THREE.SphereGeometry(5.6, 10, 10);
+    mesh = new THREE.Mesh(geometry, material);
+    mesh.position.set(x, y, z);
+
+    obj.add(mesh);
+
+    //bounding sphere
+    material = new THREE.MeshBasicMaterial( {visible: false} );
+    var boundingSphere = new THREE.Mesh(new THREE.SphereGeometry(5.6, 10, 10), material);
+    boundingSphere.position.set(0, 0, 0);
+    obj.add(boundingSphere);
+
+
+}
+
+
+function createBall(x, y, z){
+    'use strict';
+
+    var ball = new THREE.Object3D();
+
+    material = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true });
+
+    addBall(ball, 0, 5.6, 0);
+
+    scene.add(ball);
+
+    ball.position.x = x;
+    ball.position.y = y;
+    ball.position.z = z;
+
+}
+
 
 function createCamera(x,y,z) {
     'use strict';
