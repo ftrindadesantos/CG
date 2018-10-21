@@ -51,17 +51,17 @@ function onKeyDown(e) {
         
         break;
     case 49: //1
-    	createCamera(0,100,0);
+        camera = ortho_camera;
+    	//createCamera(0,100,0);
     	break;
     case 50: //2
-    	createCamera(0,0,100);
+        camera = prespect_camera;
+    	
     	break;
     case 51: //3
-    	createCamera(100,0,0);
-    	break;
-    case 52: //4 CAMERA PRINCIPAL
-    	createCamera(100,100,100);
-    	break;
+        camera = follow_camera;
+    	
+    	break; 
 
  
     }
