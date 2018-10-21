@@ -49,7 +49,7 @@ function createFollowPrespectiveCamera(){
     var aspect_ratio = window.innerWidth / window.innerHeight;
     var fov = 90;
     var near = 1;
-    var far = 50;
+    var far = 100;
 
     follow_camera = new THREE.PerspectiveCamera(fov, aspect_ratio, near, far);
     follow_camera.position.x = -20;
