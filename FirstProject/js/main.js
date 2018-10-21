@@ -4,7 +4,7 @@ const clock = new THREE.Clock();
 
 var geometry, material, mesh;
 
-var rotX, rotZ;
+var direction = new THREE.Vector3(1,0,0);
 
 function createScene() {
     'use strict';
@@ -92,9 +92,11 @@ function animateChairTop(acceleration, delta) {
     }
     
     if (chairTop.userData.left) {
-        chairTop.rotateY(Math.PI / 40); 
+        chairTop.rotateY(Math.PI / 40);
+        direction.applyAxisAngle((0,1,0),Math.PI / 40);
     } else if (chairTop.userData.right) {
         chairTop.rotateY(-Math.PI / 40);
+        direction.applyAxisAngle((0,1,0),-Math.PI / 40);
     }
 }
 
@@ -104,8 +106,9 @@ function updatePosition(obj) {
     'use strict';
 
     var speed = obj.userData.speed;
-    chair.translateX(speed * Math.cos(chairTop.rotation.y)) ;
-    chair.translateZ(speed * Math.sin(chairTop.rotation.y)) ;
+    direction.applyAxisAngle(direction,chairTop.rotation.y);
+    chair.translateX(speed * direction.getComponent(0)) ;
+    chair.translateZ(speed * direction.getComponent(2)) ;
 }
 
 
