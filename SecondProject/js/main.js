@@ -26,7 +26,6 @@ function createScene() {
     //createChairBottom(0, 0, 0);
 
     //scene.add(chair);
-
     
     createField(0,0,0);
     createBall(0,0,0);
