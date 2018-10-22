@@ -3,7 +3,7 @@ function createFirstBall(){
     'use strict';
 
     firstBall = new THREE.Object3D();
-   
+
 
 
     material = new THREE.MeshBasicMaterial({ color: 0xff00ff, wireframe: true });
@@ -67,7 +67,9 @@ function createBalls(){
 function validBallPosition(ball){
     for(var i = 0; i < ball_array.length ; i++){
         if (checkBallCollision(ball, ball_array[i]) ) {
+          if(ball != ball_array[i]){
             return false;
+          }
         }
         if (checkWallColision(ball)){
            return false;

@@ -146,7 +146,7 @@ function animateBall(delta) {
         }
         updatePosition(b);
         //getRotation(b);
-        
+
     }
 }
 
@@ -155,10 +155,13 @@ function updatePosition(obj) {
 
     'use strict';
 
+    var axisY = new THREE.Vector3(0,1,0);
+
     var speed = obj.userData.speed;
-    
+
     if(validBallPosition(obj)== false){
-      //obj.userData.direction.applyEuler(Math.PI);
+      obj.userData.direction.applyAxisAngle(axisY,Math.PI);
+      obj.userData.speed = 0.1;
     }
 
     obj.translateX(speed * obj.userData.direction.getComponent(0)) ;
@@ -186,7 +189,7 @@ function animate() {
     render();
 
 	var deltaTime = clock.getDelta() ;
-  
+
     requestAnimationFrame(animate);
 
 }
