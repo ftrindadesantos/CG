@@ -105,10 +105,38 @@ function init() {
    
 }
 
+function animateBall(delta){
+    'use strict';
+
+    var b;
+
+    for (var i = 0; i < ball_array.length; i++) {
+        b = ball_array[i];
+        b.userData.time += delta;
+        if (b.userData.time > 1.5) {
+            b.userData.speed = b.userData.speed * 1.01;
+        }
+        updatePosition(b);
+
+
+    }
+
+
+}
+
+
+function updatePosition(obj) {
+    'use strict';
+
+    var speed = obj.userData.speed;
+    obj.translateX(speed * obj.userData.direction.getComponent(0)) ;
+    obj.translateZ(speed * obj.userData.direction.getComponent(2)) ;
+}
 
 function animate() {
     'use strict';
-
+    const delta = clock.getDelta();
+    animateBall(delta);
     render();
 
     requestAnimationFrame(animate);

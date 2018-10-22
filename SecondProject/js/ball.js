@@ -26,6 +26,11 @@ function addBall(obj, x, y, z){
 
     'use strict';
     var vector = new THREE.Vector3(Math.random()*2-1, 0 , Math.random()*2-1);
+
+    obj.userData = {direction : vector.normalize(),
+                    speed : Math.random()*0.1,
+                    time : 0}
+                    
     geometry = new THREE.SphereGeometry(5.6, 10, 10);
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y, z);
