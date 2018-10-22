@@ -92,7 +92,10 @@ function init() {
     window.addEventListener("resize", onResize);
     window.addEventListener("keydown", onKeyDown);
    
+
+
 }
+
 
 
 function animate() {
@@ -100,6 +103,10 @@ function animate() {
 
     render();
 
+	var deltaTime = clock.getDelta() ;
+  
+
+    renderer.render(scene, camera);
     requestAnimationFrame(animate);
 
 }
