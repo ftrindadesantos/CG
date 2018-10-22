@@ -126,11 +126,20 @@ function init() {
 
     window.addEventListener("resize", onResize);
     window.addEventListener("keydown", onKeyDown);
+<<<<<<< HEAD
+=======
+   
+
+>>>>>>> 0fa5ca636089fc22069156cbadcdee9697abc5bb
 
 }
 
 function animateBall(delta){
     'use strict';
+
+
+
+function animate() {
 
     var b;
 
@@ -149,6 +158,7 @@ function animateBall(delta){
 
 
 function updatePosition(obj) {
+
     'use strict';
 
     var speed = obj.userData.speed;
@@ -181,6 +191,10 @@ function animate() {
     animateBall(delta);
     render();
 
+	var deltaTime = clock.getDelta() ;
+  
+
+    renderer.render(scene, camera);
     requestAnimationFrame(animate);
 
 }
