@@ -110,10 +110,10 @@ function init() {
 function animateBall(delta){
     'use strict';
 
-<<<<<<< HEAD
+
 
 function animate() {
-=======
+
     var b;
 
     for (var i = 0; i < ball_array.length; i++) {
@@ -132,7 +132,7 @@ function animate() {
 
 
 function updatePosition(obj) {
->>>>>>> 4075d34a9c88cd82c020533734ee6070dd182695
+
     'use strict';
 
     var speed = obj.userData.speed;
