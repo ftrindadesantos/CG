@@ -1,4 +1,4 @@
-var camera, scene, renderer, speed=1, firstBall, ball_array;
+var camera, scene, renderer, firstBall,  ball_array;
 
 
 var ortho_camera, prespect_camera, follow_camera;
@@ -116,6 +116,7 @@ function animate() {
 
     var b;
 
+
     for (var i = 0; i < ball_array.length; i++) {
         b = ball_array[i];
         b.userData.time += delta;
@@ -123,11 +124,9 @@ function animate() {
             b.userData.speed = b.userData.speed * 1.01;
         }
         updatePosition(b);
-
-
+        //getRotation(b);
+        
     }
-
-
 }
 
 
@@ -139,6 +138,20 @@ function updatePosition(obj) {
     obj.translateX(speed * obj.userData.direction.getComponent(0)) ;
     obj.translateZ(speed * obj.userData.direction.getComponent(2)) ;
 }
+
+function getRotation(obj){
+    'use strict';
+
+    var speed = obj.userData.speed;
+    var dirX = obj.userData.direction.getComponent(0) * speed;
+    var angleX = dirX / (Math.PI * 2) * Math.PI;
+    obj.rotateX(angleX);
+    var dirZ = obj.userData.direction.getComponent(2) * speed;
+    var angleZ = dirZ / (Math.PI * 2) * Math.PI;
+    obj.rotateZ(angleZ);
+}
+
+
 
 function animate() {
     'use strict';
