@@ -17,7 +17,7 @@ function createFirstBall(){
     firstBall.position.y = 0;
     firstBall.position.z = z;
 
-   
+
     ball_array.push(firstBall);
 
 }
@@ -30,7 +30,7 @@ function addBall(obj, x, y, z){
     obj.userData = {direction : vector.normalize(),
                     speed : Math.random()*0.1,
                     time : 0}
-                    
+
     geometry = new THREE.SphereGeometry(5.6, 10, 10);
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y, z);
@@ -40,7 +40,7 @@ function addBall(obj, x, y, z){
     //bounding sphere
     material = new THREE.MeshBasicMaterial( {visible: false} );
     var boundingSphere = new THREE.Mesh(new THREE.SphereGeometry(5.6, 10, 10), material);
-    boundingSphere.name = "Bounding Sphere";   
+    boundingSphere.name = "Bounding Sphere";
     boundingSphere.position.set(0, 0, 0);
     obj.add(boundingSphere);
 
@@ -62,8 +62,11 @@ function createBalls(){
 }
 function validBallPosition(ball){
     for(var i = 0; i < ball_array.length ; i++){
-        if (checkCollision(ball, ball_array[i]) ) {
-            return false; 
+        if (checkBallCollision(ball, ball_array[i]) ) {
+            return false;
+        }
+        if (checkWallColision(ball)){
+           return false;
         }
     }
     return true;
@@ -80,7 +83,7 @@ function createBall(){
 
     addBall(ball, 0, 5.6, 0);
 
-    
+
 
     var x = Math.random()*33.8 - 16.9;
     var z = Math.random()*83.8 - 41.9;

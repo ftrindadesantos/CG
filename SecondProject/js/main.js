@@ -13,7 +13,7 @@ var geometry, material, mesh;
 var direction = new THREE.Vector3(1,0,0);
 
 
-function checkCollision (obj1, obj2){
+function checkBallCollision (obj1, obj2){
     "use strict";
     var r1 = obj1.getObjectByName("Bounding Sphere").geometry.boundingSphere.radius;
     var r2 = obj2.getObjectByName("Bounding Sphere").geometry.boundingSphere.radius;
@@ -21,6 +21,34 @@ function checkCollision (obj1, obj2){
     return Math.pow((r1 + r2), 2) >= Math.pow(distance, 2);
 }
 
+function checkWallColision(obj1){
+    "use strict";
+    var r1 = obj1.getObjectByName("Bounding Sphere").geometry.boundingSphere.radius;
+    var p1 = obj1.getWorldPosition();
+
+    if(obj1.position.x - r1 <= -23.75){
+      //Colidir
+      console.log("Colidi Atrás");
+      return true;
+    }
+    if(obj1.position.x + r1 >= 23.75){
+      //Colidir
+      console.log("Colidi Frente");
+      return true;
+    }
+    if(obj1.position.z - r1 <= -48.75){
+      //Colidir
+      console.log("Colidi Atrás");
+      return true;
+    }
+    if(obj1.position.z + r1 >= 48.75){
+      //Colidir
+      console.log("Colidi Frente");
+      return true;
+    }
+
+    return false;
+}
 
 function createScene() {
     'use strict';
@@ -30,7 +58,7 @@ function createScene() {
     scene = new THREE.Scene();
 
     scene.add(new THREE.AxisHelper(10));
-    
+
     createFirstBall();
     createField(0,0,0);
     createBalls();
@@ -38,13 +66,9 @@ function createScene() {
     ortho_camera = createOrthoCamera();
     prespect_camera = createPrespectiveCamera();
     camera = ortho_camera;
-    
+
 
 }
-
-
-
-
 
 
 function onResize() {
@@ -69,7 +93,7 @@ function onResize() {
         }
     } else {
         camera.aspect = renderer.getSize().width / renderer.getSize().height;
-    } 
+    }
 
     camera.updateProjectionMatrix();
 }
@@ -94,7 +118,7 @@ function init() {
 
 
     createScene();
-    	
+
 
 
     render();
@@ -102,7 +126,7 @@ function init() {
 
     window.addEventListener("resize", onResize);
     window.addEventListener("keydown", onKeyDown);
-   
+
 }
 
 function animateBall(delta){
@@ -129,6 +153,11 @@ function updatePosition(obj) {
     'use strict';
 
     var speed = obj.userData.speed;
+
+    if(validBallPosition(obj)== false){
+      obj.userData.direction.applyEuler(Math.PI);
+    }
+
     obj.translateX(speed * obj.userData.direction.getComponent(0)) ;
     obj.translateZ(speed * obj.userData.direction.getComponent(2)) ;
 }
