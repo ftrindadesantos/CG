@@ -1,4 +1,4 @@
-var camera, scene, renderer, speed=1, firstBall;
+var camera, scene, renderer, speed=1, firstBall, ball_array;
 
 
 var ortho_camera, prespect_camera, follow_camera;
@@ -13,11 +13,19 @@ var geometry, material, mesh;
 var direction = new THREE.Vector3(1,0,0);
 
 
-
+function checkCollision (obj1, obj2){
+    "use strict";
+    var r1 = obj1.getObjectByName("Bounding Sphere").geometry.boundingSphere.radius;
+    var r2 = obj2.getObjectByName("Bounding Sphere").geometry.boundingSphere.radius;
+    var distance = obj1.getWorldPosition().distanceTo(obj2.getWorldPosition());
+    return Math.pow((r1 + r2), 2) >= Math.pow(distance, 2);
+}
 
 
 function createScene() {
     'use strict';
+
+    ball_array = new Array(0);
 
     scene = new THREE.Scene();
 
@@ -75,6 +83,9 @@ function render() {
 
 function init() {
     'use strict';
+
+    ball_array = null;
+
     renderer = new THREE.WebGLRenderer({
         antialias: true
     });
