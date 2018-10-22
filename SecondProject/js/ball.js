@@ -35,12 +35,6 @@ function addBall(obj, x, y, z){
                     speed : Math.random()*0.1 + 0.001,
                     time : 0}
 
-<<<<<<< HEAD
-=======
-
-  
-
->>>>>>> b3cab0c3164e14ae8f879358a92e086f5fee4364
     geometry = new THREE.SphereGeometry(5.6, 10, 10);
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y, z);

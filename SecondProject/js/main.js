@@ -126,21 +126,15 @@ function init() {
 
     window.addEventListener("resize", onResize);
     window.addEventListener("keydown", onKeyDown);
-<<<<<<< HEAD
-=======
-   
 
->>>>>>> 0fa5ca636089fc22069156cbadcdee9697abc5bb
 
 }
 
-function animateBall(delta){
+
+
+
+function animateBall(delta) {
     'use strict';
-
-
-
-function animate() {
-
     var b;
 
 
@@ -163,9 +157,9 @@ function updatePosition(obj) {
 
     var speed = obj.userData.speed;
 
-    if(validBallPosition(obj)== false){
-      obj.userData.direction.applyEuler(Math.PI);
-    }
+    //if(validBallPosition(obj)== false){
+      //obj.userData.direction.applyEuler(Math.PI);
+    //}
 
     obj.translateX(speed * obj.userData.direction.getComponent(0)) ;
     obj.translateZ(speed * obj.userData.direction.getComponent(2)) ;
@@ -193,8 +187,6 @@ function animate() {
 
 	var deltaTime = clock.getDelta() ;
   
-
-    renderer.render(scene, camera);
     requestAnimationFrame(animate);
 
 }
