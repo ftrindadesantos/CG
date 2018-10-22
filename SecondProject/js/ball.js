@@ -3,6 +3,8 @@ function createFirstBall(){
     'use strict';
 
     firstBall = new THREE.Object3D();
+   
+
 
     material = new THREE.MeshBasicMaterial({ color: 0xff00ff, wireframe: true });
 
@@ -20,6 +22,8 @@ function createFirstBall(){
 
     ball_array.push(firstBall);
 
+    firstBall.add(new THREE.AxisHelper(10));
+
 }
 
 function addBall(obj, x, y, z){
@@ -28,9 +32,15 @@ function addBall(obj, x, y, z){
     var vector = new THREE.Vector3(Math.random()*2-1, 0 , Math.random()*2-1);
 
     obj.userData = {direction : vector.normalize(),
-                    speed : Math.random()*0.1,
+                    speed : Math.random()*0.1 + 0.001,
                     time : 0}
 
+<<<<<<< HEAD
+=======
+
+  
+
+>>>>>>> b3cab0c3164e14ae8f879358a92e086f5fee4364
     geometry = new THREE.SphereGeometry(5.6, 10, 10);
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y, z);
