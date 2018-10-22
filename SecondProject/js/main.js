@@ -156,10 +156,10 @@ function updatePosition(obj) {
     'use strict';
 
     var speed = obj.userData.speed;
-
-    //if(validBallPosition(obj)== false){
+    
+    if(validBallPosition(obj)== false){
       //obj.userData.direction.applyEuler(Math.PI);
-    //}
+    }
 
     obj.translateX(speed * obj.userData.direction.getComponent(0)) ;
     obj.translateZ(speed * obj.userData.direction.getComponent(2)) ;
