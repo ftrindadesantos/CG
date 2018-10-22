@@ -1,4 +1,4 @@
-var camera, scene, renderer, speed=1, firstBall;
+var camera, scene, renderer, speed=1, firstBall, ball_array;
 
 
 var ortho_camera, prespect_camera, follow_camera;
@@ -13,11 +13,19 @@ var geometry, material, mesh;
 var direction = new THREE.Vector3(1,0,0);
 
 
-
+function checkCollision (obj1, obj2){
+    "use strict";
+    var r1 = obj1.getObjectByName("Bounding Sphere").geometry.boundingSphere.radius;
+    var r2 = obj2.getObjectByName("Bounding Sphere").geometry.boundingSphere.radius;
+    var distance = obj1.getWorldPosition().distanceTo(obj2.getWorldPosition());
+    return Math.pow((r1 + r2), 2) >= Math.pow(distance, 2);
+}
 
 
 function createScene() {
     'use strict';
+
+    ball_array = new Array(0);
 
     scene = new THREE.Scene();
 
@@ -75,6 +83,9 @@ function render() {
 
 function init() {
     'use strict';
+
+    ball_array = null;
+
     renderer = new THREE.WebGLRenderer({
         antialias: true
     });
@@ -96,11 +107,43 @@ function init() {
 
 }
 
+function animateBall(delta){
+    'use strict';
 
+<<<<<<< HEAD
+
+function animate() {
+=======
+    var b;
+
+    for (var i = 0; i < ball_array.length; i++) {
+        b = ball_array[i];
+        b.userData.time += delta;
+        if (b.userData.time > 1.5) {
+            b.userData.speed = b.userData.speed * 1.01;
+        }
+        updatePosition(b);
+
+
+    }
+
+
+}
+
+
+function updatePosition(obj) {
+>>>>>>> 4075d34a9c88cd82c020533734ee6070dd182695
+    'use strict';
+
+    var speed = obj.userData.speed;
+    obj.translateX(speed * obj.userData.direction.getComponent(0)) ;
+    obj.translateZ(speed * obj.userData.direction.getComponent(2)) ;
+}
 
 function animate() {
     'use strict';
-
+    const delta = clock.getDelta();
+    animateBall(delta);
     render();
 
 	var deltaTime = clock.getDelta() ;
