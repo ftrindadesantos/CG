@@ -1,13 +1,25 @@
 var metalmaterial,glassmaterial;
 
 function setupMaterials(){
-    metalmaterial = new THREE.MeshLambertMaterial( {
+    var loader = new THREE.TextureLoader();
 
-        color: 0xffffff,
-      } );
-
-    glassmaterial = new THREE.MeshLambertMaterial( {
+    metalmaterial = new THREE.MeshPhongMaterial( {
 
         color: 0xa0a0a0,
+        specular: 0xffffff,
+        shininess: 100,
+        wireframe: false,
+        //map: loader.load("https://i.imgur.com/dhvrzT5.jpg"),
+        //normalMap: loader.load('https://i.imgur.com/dhvrzT5.jpg')
+      } );
+
+    glassmaterial = new THREE.MeshPhongMaterial( {
+
+        color: 0x1a1a1a,
+        specular: 0xffffff,
+        shininess: 100,
+        wireframe: false,
+        //map: loader.load(),
+        //normalMap: loader.load(),
       } );
 }
