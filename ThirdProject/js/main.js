@@ -21,7 +21,13 @@ function createScene() {
 
     scene.add(new THREE.AxisHelper(10));
 
+
+
+    setupLights();
+    setupMaterials();
+
     createPlane(0,0,0);
+
     ortho_camera = createOrthoCamera();
     prespect_camera = createPrespectiveCamera();
     camera = prespect_camera;

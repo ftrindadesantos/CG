@@ -29,8 +29,7 @@ function createPlane(x, y, z) {
 function addPlaneBody(obj,x,y,z){
 
   var geometry = new THREE.CylinderGeometry( 10, 5, 40, 32 );
-  var material = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
-  var body = new THREE.Mesh( geometry, material ) ;
+  var body = new THREE.Mesh( geometry, metalmaterial ) ;
 
   body.rotateX(Math.PI/2);
   body.position.set(x,y,z);
@@ -40,8 +39,7 @@ function addPlaneBody(obj,x,y,z){
 
 function addPlaneNose(obj,x,y,z){
   var geometry = new THREE.ConeBufferGeometry( 10, 20, 32 );
-  var material = new THREE.MeshBasicMaterial( {color: 0xff0000} );
-  var nose = new THREE.Mesh( geometry, material );
+  var nose = new THREE.Mesh( geometry, metalmaterial );
 
   nose.rotateX(Math.PI/2);
   nose.position.set(x,y,z+30);
@@ -51,20 +49,18 @@ function addPlaneNose(obj,x,y,z){
 
 function addPlaneCockPit(obj,x,y,z){
   var geometry = new THREE.SphereGeometry( 4, 20, 20 );
-  var material = new THREE.MeshBasicMaterial( {color: 0xa0a0a0} );
-  var cpit = new THREE.Mesh( geometry, material );
+  var cpit = new THREE.Mesh( geometry, glassmaterial );
 
   cpit.scale.set(1,1,2.5);
   cpit.rotateX(Math.PI/6);
-  cpit.position.set(x,y+4.5,z+28);
+  cpit.position.set(x,y+4,z+28);
 
   obj.add( cpit );
 }
 
 function addPlaneLeftWing(obj,x,y,z){
   var geometry = new THREE.CylinderGeometry( 3, 1, 30, 32 );
-  var material = new THREE.MeshBasicMaterial( {color: 0xffa0a0} );
-  var lwing = new THREE.Mesh( geometry, material );
+  var lwing = new THREE.Mesh( geometry, metalmaterial );
 
   lwing.scale.set(1,1,2.5);
   lwing.rotateZ(Math.PI/2);
@@ -75,8 +71,7 @@ function addPlaneLeftWing(obj,x,y,z){
 
 function addPlaneRightWing(obj,x,y,z){
   var geometry = new THREE.CylinderGeometry( 3, 1, 30, 32 );
-  var material = new THREE.MeshBasicMaterial( {color: 0xffa0a0} );
-  var rwing = new THREE.Mesh( geometry, material );
+  var rwing = new THREE.Mesh( geometry, metalmaterial );
 
   rwing.scale.set(1,1,2.5);
   rwing.rotateZ(-Math.PI/2);
@@ -87,8 +82,7 @@ function addPlaneRightWing(obj,x,y,z){
 
 function addPlaneLeftStabelizer(obj,x,y,z){
   var geometry = new THREE.CylinderGeometry( 3, 1, 30, 32 );
-  var material = new THREE.MeshBasicMaterial( {color: 0xffa0a0} );
-  var lstab = new THREE.Mesh( geometry, material );
+  var lstab = new THREE.Mesh( geometry, metalmaterial );
 
   lstab.scale.set(0.5,0.5,1.25);
   lstab.rotateZ(Math.PI/2);
@@ -99,8 +93,7 @@ function addPlaneLeftStabelizer(obj,x,y,z){
 
 function addPlaneRightStabelizer(obj,x,y,z){
   var geometry = new THREE.CylinderGeometry( 3, 1, 30, 32 );
-  var material = new THREE.MeshBasicMaterial( {color: 0xffa0a0} );
-  var rstab = new THREE.Mesh( geometry, material );
+  var rstab = new THREE.Mesh( geometry, metalmaterial );
 
   rstab.scale.set(0.5,0.5,1.25);
   rstab.rotateZ(-Math.PI/2);
@@ -111,15 +104,13 @@ function addPlaneRightStabelizer(obj,x,y,z){
 
 function addPlaneTail(obj,x,y,z){
   var geometry = new THREE.CylinderGeometry( 1, 3, 25, 32 );
-  var material = new THREE.MeshBasicMaterial( {color: 0xffa0a0} );
-  var tail = new THREE.Mesh( geometry, material );
+  var tail = new THREE.Mesh( geometry, metalmaterial );
 
   tail.scale.set(0.75,0.75,1.75);
   tail.position.set(x,y+10,z-14.8);
 
   var geometry = new THREE.BoxGeometry( 20, 1, 7);
-  var material = new THREE.MeshBasicMaterial( {color: 0xffa0a0} );
-  var tailStabelizer = new THREE.Mesh( geometry, material );
+  var tailStabelizer = new THREE.Mesh( geometry, metalmaterial );
 
   tailStabelizer.position.set(x,y+15,z-15);
 
