@@ -26,22 +26,22 @@ function checkWallColision(obj1){
     var r1 = obj1.getObjectByName("Bounding Sphere").geometry.boundingSphere.radius;
     var p1 = obj1.getWorldPosition();
 
-    if(obj1.position.x - r1 <= -23.75){
+    if(obj1.position.x - r1 <= -23){
       //Colidir
       console.log("Colidi Atrás");
       return true;
     }
-    if(obj1.position.x + r1 >= 23.75){
+    if(obj1.position.x + r1 >= 23){
       //Colidir
       console.log("Colidi Frente");
       return true;
     }
-    if(obj1.position.z - r1 <= -48.75){
+    if(obj1.position.z - r1 <= -48){
       //Colidir
       console.log("Colidi Atrás");
       return true;
     }
-    if(obj1.position.z + r1 >= 48.75){
+    if(obj1.position.z + r1 >= 48){
       //Colidir
       console.log("Colidi Frente");
       return true;
@@ -145,7 +145,6 @@ function animateBall(delta) {
             b.userData.speed = b.userData.speed * 1.01;
         }
         updatePosition(b);
-        //getRotation(b);
 
     }
 }
@@ -161,8 +160,9 @@ function updatePosition(obj) {
 
     if(validBallPosition(obj)== false){
       obj.userData.direction.applyAxisAngle(axisY,Math.PI);
-      obj.userData.speed = 0.1;
+      obj.userData.speed = 0.03;
     }
+
 
     obj.translateX(speed * obj.userData.direction.getComponent(0)) ;
     obj.translateZ(speed * obj.userData.direction.getComponent(2)) ;
@@ -172,12 +172,15 @@ function getRotation(obj){
     'use strict';
 
     var speed = obj.userData.speed;
+
     var dirX = obj.userData.direction.getComponent(0) * speed;
-    var angleX = dirX / (Math.PI * 2) * Math.PI;
-    obj.rotateX(angleX);
+    var angleX = dirX / ((Math.PI * 2) * Math.PI);
     var dirZ = obj.userData.direction.getComponent(2) * speed;
-    var angleZ = dirZ / (Math.PI * 2) * Math.PI;
-    obj.rotateZ(angleZ);
+    var angleZ = dirZ / ((Math.PI * 2) * Math.PI);
+
+    var axis = new THREE.Vector3(0,0,angleZ);
+
+    obj.rotateOnAxis( axis.normalize(), Math.PI );
 }
 
 
