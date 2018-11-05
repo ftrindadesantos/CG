@@ -6,16 +6,18 @@ function createLight(){
 
 
 function spotLight(x, y, z){
-	var spotlight = new THREE.SpotLight(0xffffff);
+	var spotlight = new THREE.SpotLight(0xffffff, 1.3);
 	spotlight.position.set(x, y-2, z);
 
 	spotlight.castShadow = true;
 	spotlight.shadow.mapSize.width = 1024;
 	spotlight.shadow.mapSize.height = 1024;
 
-	spotlight.shadow.camera.near = 50;
-	spotlight.shadow.camera.far = 400;
+	spotlight.shadow.camera.near = 20;
+	spotlight.shadow.camera.far = 80;
 	spotlight.shadow.camera.fov = 30;
+
+	spotlight.lookAt(0,0,0);
 
 	return spotlight;
 }

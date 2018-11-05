@@ -1,6 +1,9 @@
 var camera, scene, renderer,  light, aux=0, aux1=0, planeObj, metalmaterial, glassmaterial, plane;
 
 var spotlight1, spotlight2, spotlight3, spotlight4;
+var light1, light2, light3, light4;
+var l1 = 0, l2 = 0, l3 = 0, l4 = 0;
+
 var ortho_camera, prespect_camera, follow_camera;
 var camera_height = 100;
 var camera_width = 160;
@@ -30,8 +33,7 @@ function createScene() {
     light = createLight();
     scene.add(light);
 
-    var light2 = spotLight(20, 20, -20);
-    scene.add(light2);
+    
     
     planeObj.add(plane);
     planeObj.add(metalmaterial);
@@ -51,21 +53,30 @@ function createScene() {
     spotlight1 = createSpotLight( 20, 20, -20 );
     spotlight1.rotateX(-0.3);
     spotlight1.rotateZ(-0.3);
+    light1 = spotLight(20, 20, -20);
+    scene.add(light1);
 
+   
 
-    spotlight2 = createSpotLight( -20, 20, 20 );
+    spotlight2 = createSpotLight( 20, 20, 20 );
     spotlight2.rotateX(0.3);
-    spotlight2.rotateZ(0.3);
+    spotlight2.rotateZ(-0.3);
+    light2 = spotLight(20, 20, 20);
+    scene.add(light2);
   
 
-    spotlight3= createSpotLight( 20, 20, 20 );
+    spotlight3= createSpotLight( -20, 20, 20 );
     spotlight3.rotateX(0.3);
-    spotlight3.rotateZ(-0.3);
+    spotlight3.rotateZ(0.3);
+    light3 = spotLight(-20, 20, 20);
+    scene.add(light3);
   
 
     spotlight4 = createSpotLight( -20, 20, -20 );
     spotlight4.rotateX(-0.3);
     spotlight4.rotateZ(0.3);
+    light4 = spotLight(-20, 20, -20);
+    scene.add(light4);
 
     scene.add(spotlight1);
     scene.add(spotlight2);

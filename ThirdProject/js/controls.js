@@ -33,7 +33,6 @@ function onKeyDown(e) {
             light.intensity = 1.3;
             aux = 0;
         }
-       
         break;
 
 
@@ -72,16 +71,53 @@ function onKeyDown(e) {
 
 
     case 49: //1
-      camera = ortho_camera;
+        if (l1 == 0) {
+            light1.intensity = 0;
+            l1 = 1;
+        }
+
+        else if (l1 == 1) {
+            light1.intensity = 1.3;
+            l1 = 0;
+        }
+
     	break;
     case 50: //2
-      camera = prespect_camera;
+        if (l2 == 0) {
+            light2.intensity = 0;
+            l2 = 1;
+        }
+
+        else if (l2 == 1) {
+            light2.intensity = 1.3;
+            l2 = 0;
+        }
 
     	break;
     case 51: //3
+        if (l3 == 0) {
+            light3.intensity = 0;
+            l3 = 1;
+        }
 
+        else if (l3 == 1) {
+            light3.intensity = 1.3;
+            l3 = 0;
+        }
 
     	break;
+    case 52: //3
+            if (l4 == 0) {
+                light4.intensity = 0;
+                l4 = 1;
+            }
+
+            else if (l4 == 1) {
+                light4.intensity = 1.3;
+                l4 = 0;
+            }
+
+            break;
 
 
     }
