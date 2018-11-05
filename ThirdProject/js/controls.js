@@ -38,7 +38,19 @@ function onKeyDown(e) {
 
 
     case 71: //G  
-        
+
+        if (aux1 == 0) {
+            console.log("O");
+            plane.materials = metalmaterialGouraud;
+            aux1 = 1;
+        }
+
+        else if (aux1 == 1) {
+            console.log("P");
+            plane.materials = metalmaterialPhong;
+
+            aux1 = 0;
+        }
         break;
 
     case 37: //LEFT

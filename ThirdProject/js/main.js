@@ -1,4 +1,4 @@
-var camera, scene, renderer, firstBall,  ball_array, light, aux=0;
+var camera, scene, renderer,  light, aux=0, aux1=0, metalmaterial, glassmaterial, plane;
 
 
 var ortho_camera, prespect_camera, follow_camera;
@@ -19,24 +19,23 @@ function createScene() {
     plane = new THREE.Object3D();
     scene = new THREE.Scene();
 
+
     scene.add(new THREE.AxisHelper(10));
-
-
-
 
     light = createLight();
     scene.add(light);
     
 
     setupMaterials();
-
+    metalmaterial = metalmaterialPhong;
+    glassmaterial = glassmaterialPhong;
     createPlane(0,0,0);
 
     ortho_camera = createOrthoCamera();
     prespect_camera = createPrespectiveCamera();
     camera = prespect_camera;
 
-    scene.add(plane);
+    scene.add(plane); 
 
 }
 
@@ -78,7 +77,6 @@ function render() {
 function init() {
     'use strict';
 
-    ball_array = null;
 
     renderer = new THREE.WebGLRenderer({
         antialias: true
