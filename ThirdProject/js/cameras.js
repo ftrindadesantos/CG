@@ -8,9 +8,9 @@ function createPrespectiveCamera() {
     var far = 1000;
 
     var tmp_camera = new THREE.PerspectiveCamera(fov, aspect_ratio, near, far);
-    tmp_camera.position.x = 75;
-    tmp_camera.position.y = 55;
-    tmp_camera.position.z = 35;
+    tmp_camera.position.x = 70;
+    tmp_camera.position.y = 50;
+    tmp_camera.position.z = 30;
     tmp_camera.lookAt(scene.position);
     return tmp_camera;
 }

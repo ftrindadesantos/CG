@@ -4,14 +4,14 @@ function onKeyDown(e) {
     switch (e.keyCode) {
 
     case 65: //A
-    case 97: //a
+    /*case 97: //a
         scene.traverse(function (node) {
             if (node instanceof THREE.Mesh) {
                 node.material.wireframe = !node.material.wireframe;
             }
         });
         break;
-
+    */
     case 83:  //S
     case 69:  //E
     case 101: //e
@@ -54,18 +54,24 @@ function onKeyDown(e) {
         break;
 
     case 37: //LEFT
-        plane.rotateY(Math.PI/10);
+        planePhong.rotateY(Math.PI/10);
+        planeGauraud.rotateY(Math.PI/10);
+
     	break;
     case 39: //RIGHT
-        plane.rotateY(-Math.PI/10);
+        planePhong.rotateY(-Math.PI/10);
+        planeGauraud.rotateY(-Math.PI/10);
+
     	break;
 
 
     case 38: //UP
-        plane.rotateX(Math.PI/10);
+        planePhong.rotateX(Math.PI/10);
+        planeGauraud.rotateX(Math.PI/10);
     	break;
     case 40: //DOWN
-        plane.rotateX(-Math.PI/10);
+        planePhong.rotateX(-Math.PI/10);
+        planeGauraud.rotateX(-Math.PI/10);
     	break;
 
 
