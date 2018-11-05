@@ -44,38 +44,37 @@ function createScene() {
     glassmaterial = glassmaterialPhong;
     createPlane(0,0,0);
 
-    ortho_camera = createOrthoCamera();
     prespect_camera = createPrespectiveCamera();
     camera = prespect_camera;
 
     scene.add(planeObj); 
 
-    spotlight1 = createSpotLight( 20, 20, -20 );
+    spotlight1 = createSpotLight( 20, 30, -20 );
     spotlight1.rotateX(-0.3);
     spotlight1.rotateZ(-0.3);
-    light1 = spotLight(20, 20, -20);
+    light1 = spotLight(20, 30, -20);
     scene.add(light1);
 
    
 
-    spotlight2 = createSpotLight( 20, 20, 20 );
+    spotlight2 = createSpotLight( 20, 30, 20 );
     spotlight2.rotateX(0.3);
     spotlight2.rotateZ(-0.3);
-    light2 = spotLight(20, 20, 20);
+    light2 = spotLight(20, 30, 20);
     scene.add(light2);
   
 
-    spotlight3= createSpotLight( -20, 20, 20 );
+    spotlight3= createSpotLight( -20, 30, 20 );
     spotlight3.rotateX(0.3);
     spotlight3.rotateZ(0.3);
-    light3 = spotLight(-20, 20, 20);
+    light3 = spotLight(-20, 30, 20);
     scene.add(light3);
   
 
-    spotlight4 = createSpotLight( -20, 20, -20 );
+    spotlight4 = createSpotLight( -20, 30, -20 );
     spotlight4.rotateX(-0.3);
     spotlight4.rotateZ(0.3);
-    light4 = spotLight(-20, 20, -20);
+    light4 = spotLight(-20, 30, -20);
     scene.add(light4);
 
     scene.add(spotlight1);

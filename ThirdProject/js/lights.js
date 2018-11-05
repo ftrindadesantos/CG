@@ -28,7 +28,7 @@ function createSpotLight(x, y, z){
     
     var spotLight = new THREE.Object3D();
     
-    material = new THREE.MeshBasicMaterial({ color: 0xe5e3cc, wireframe: false });
+    material = new THREE.MeshPhongMaterial({ color: 0xe5e3cc, specular: 0xffffff, shininess: 100,wireframe: false });
 
     addCone(spotLight, x, y, z); 
     addBulb(spotLight, x, y-2 , z );
