@@ -38,19 +38,18 @@ function onKeyDown(e) {
 
     case 71: //G  
 
-        if (aux1 == 0) {
-            console.log("O");
-            metalmaterial = metalmaterialGouraud;
-            glassmaterial = glassmaterialGouraud;
-            aux1 = 1;
+        if (p == 0) {
+            scene.remove(plane);
+            plane = planeGauraud;
+            scene.add(plane);
+            p = 1;
         }
 
-        else if (aux1 == 1) {
-            console.log("P");
-            metalmaterial = metalmaterialPhong;
-            glassmaterial = glassmaterialPhong;
-
-            aux1 = 0;
+        else if (p == 1) {
+            scene.remove(plane);
+            plane = planePhong;
+            scene.add(plane);
+            p = 0;
         }
         break;
 

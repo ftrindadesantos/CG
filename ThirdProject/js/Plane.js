@@ -1,10 +1,10 @@
 function createPlane(x, y, z) {
   'use strict';
-
+  var planet = new THREE.Object3D();
   var planetemp = new THREE.Object3D();
   material = new THREE.MeshBasicMaterial({ color: 0xbfbc9c, wireframe: true });
 
-  plane.userData = {direction: new THREE.Vector3(0,0,0),
+  planet.userData = {direction: new THREE.Vector3(0,0,0),
                   speed: 0,
                   left: false,
                   right: false,
@@ -19,11 +19,13 @@ function createPlane(x, y, z) {
   addPlaneRightStabelizer(planetemp,x,y,z);
   addPlaneTail(planetemp,x,y,z);
 
-  plane.add(planetemp);
+  planet.add(planetemp);
 
-  plane.position.x = x;
-  plane.position.y = y;
-  plane.position.z = z;
+  planet.position.x = x;
+  planet.position.y = y;
+  planet.position.z = z;
+
+  return planet;
 }
 
 function addPlaneBody(obj,x,y,z){
