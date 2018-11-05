@@ -32,7 +32,7 @@ function addPlaneBody(obj,x,y,z){
   var body = new THREE.Mesh( geometry, metalmaterial ) ;
 
   body.rotateX(Math.PI/2);
-  body.position.set(x,y,z);
+  body.position.set(x,y,z-12);
 
   obj.add( body );
 }
@@ -42,7 +42,7 @@ function addPlaneNose(obj,x,y,z){
   var nose = new THREE.Mesh( geometry, metalmaterial );
 
   nose.rotateX(Math.PI/2);
-  nose.position.set(x,y,z+30);
+  nose.position.set(x,y,z+18);
 
   obj.add( nose );
 }
@@ -53,7 +53,7 @@ function addPlaneCockPit(obj,x,y,z){
 
   cpit.scale.set(1,1,2.5);
   cpit.rotateX(Math.PI/6);
-  cpit.position.set(x,y+4,z+28);
+  cpit.position.set(x,y+4,z+16);
 
   obj.add( cpit );
 }
@@ -64,7 +64,7 @@ function addPlaneLeftWing(obj,x,y,z){
 
   lwing.scale.set(1,1,2.5);
   lwing.rotateZ(Math.PI/2);
-  lwing.position.set(x+20,y+3,z+12);
+  lwing.position.set(x+20,y+3,z);
 
   obj.add( lwing );
 }
@@ -75,7 +75,7 @@ function addPlaneRightWing(obj,x,y,z){
 
   rwing.scale.set(1,1,2.5);
   rwing.rotateZ(-Math.PI/2);
-  rwing.position.set(x-20,y+3,z+12);
+  rwing.position.set(x-20,y+3,z);
 
   obj.add( rwing );
 }
@@ -86,7 +86,7 @@ function addPlaneLeftStabelizer(obj,x,y,z){
 
   lstab.scale.set(0.5,0.5,1.25);
   lstab.rotateZ(Math.PI/2);
-  lstab.position.set(x+11,y+3,z-10);
+  lstab.position.set(x+11,y+3,z-22);
 
   obj.add( lstab );
 }
@@ -97,7 +97,7 @@ function addPlaneRightStabelizer(obj,x,y,z){
 
   rstab.scale.set(0.5,0.5,1.25);
   rstab.rotateZ(-Math.PI/2);
-  rstab.position.set(x-11,y+3,z-10);
+  rstab.position.set(x-11,y+3,z-22);
 
   obj.add( rstab );
 }
@@ -107,12 +107,12 @@ function addPlaneTail(obj,x,y,z){
   var tail = new THREE.Mesh( geometry, metalmaterial );
 
   tail.scale.set(0.75,0.75,1.75);
-  tail.position.set(x,y+10,z-14.8);
+  tail.position.set(x,y+10,z-26.8);
 
   var geometry = new THREE.BoxGeometry( 20, 1, 7);
   var tailStabelizer = new THREE.Mesh( geometry, metalmaterial );
 
-  tailStabelizer.position.set(x,y+15,z-15);
+  tailStabelizer.position.set(x,y+15,z-27);
 
   obj.add( tail );
   obj.add( tailStabelizer );

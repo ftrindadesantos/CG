@@ -32,10 +32,10 @@ function onKeyDown(e) {
 
 
     case 38: //UP
-        plane.translateY(1);
+        plane.rotateX(Math.PI/10);
     	break;
     case 40: //DOWN
-        plane.translateY(-1);
+        plane.rotateX(-Math.PI/10);
     	break;
 
 
