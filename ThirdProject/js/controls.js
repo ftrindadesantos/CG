@@ -36,6 +36,24 @@ function onKeyDown(e) {
         break;
 
 
+    case 76: //L
+    
+
+        if (b == 0) {
+            scene.remove(plane);
+            plane = planeBasic;
+            scene.add(plane);
+            b = 1;
+        }
+
+        else if (b == 1) {
+            scene.remove(plane);
+            plane = planePhong;
+            scene.add(plane);
+            b = 0;
+        }
+        break;
+
     case 71: //G  
 
         if (p == 0) {
@@ -56,11 +74,13 @@ function onKeyDown(e) {
     case 37: //LEFT
         planePhong.rotateY(Math.PI/10);
         planeGauraud.rotateY(Math.PI/10);
+        planeBasic.rotateY(Math.PI/10);
 
     	break;
     case 39: //RIGHT
         planePhong.rotateY(-Math.PI/10);
         planeGauraud.rotateY(-Math.PI/10);
+        planeBasic.rotateY(-Math.PI/10);
 
     	break;
 
@@ -68,10 +88,14 @@ function onKeyDown(e) {
     case 38: //UP
         planePhong.rotateX(Math.PI/10);
         planeGauraud.rotateX(Math.PI/10);
+        planeBasic.rotateX(Math.PI/10);
+
     	break;
     case 40: //DOWN
         planePhong.rotateX(-Math.PI/10);
         planeGauraud.rotateX(-Math.PI/10);
+        planeBasic.rotateX(-Math.PI/10);
+
     	break;
 
 

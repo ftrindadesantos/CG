@@ -1,8 +1,8 @@
-var camera, scene, renderer,  light, aux=0, metalmaterial, glassmaterial, plane, planePhong, planeGauraud;
+var camera, scene, renderer,  light, aux=0, metalmaterial, glassmaterial, plane, planePhong, planeGauraud, planeBasic;
 
 
 var p = 0;
-
+var b = 0;
 var spotlight1, spotlight2, spotlight3, spotlight4;
 var light1, light2, light3, light4;
 var l1 = 0, l2 = 0, l3 = 0, l4 = 0;
@@ -34,7 +34,9 @@ function createScene() {
     light = createLight();
     scene.add(light);
 
-    
+    metalmaterial = new THREE.MeshBasicMaterial({ color: 0xbfbc9c, wireframe: false});
+    glassmaterial = new THREE.MeshBasicMaterial({ color: 0x1a1a1a, wireframe: false });
+    planeBasic = createPlane(0, 0, 0);
     
   
     setupMaterials();
