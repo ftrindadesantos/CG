@@ -1,4 +1,4 @@
-var camera, scene, renderer, firstBall,  ball_array;
+var camera, scene, renderer, firstBall,  ball_array, light, aux=0;
 
 
 var ortho_camera, prespect_camera, follow_camera;
@@ -23,7 +23,11 @@ function createScene() {
 
 
 
-    setupLights();
+
+    light = createLight();
+    scene.add(light);
+    
+
     setupMaterials();
 
     createPlane(0,0,0);

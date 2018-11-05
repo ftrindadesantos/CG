@@ -23,6 +23,24 @@ function onKeyDown(e) {
 
         break;
 
+    case 78: //N
+        if (aux == 0) {
+            light.intensity = 0.5;
+            aux = 1;
+        }
+
+        else if (aux == 1) {
+            light.intensity = 1.3;
+            aux = 0;
+        }
+       
+        break;
+
+
+    case 71: //G  
+        
+        break;
+
     case 37: //LEFT
         plane.rotateY(Math.PI/10);
     	break;
