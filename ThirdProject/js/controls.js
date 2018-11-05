@@ -41,13 +41,15 @@ function onKeyDown(e) {
 
         if (aux1 == 0) {
             console.log("O");
-            plane.materials = metalmaterialGouraud;
+            metalmaterial = metalmaterialGouraud;
+            glassmaterial = glassmaterialGouraud;
             aux1 = 1;
         }
 
         else if (aux1 == 1) {
             console.log("P");
-            plane.materials = metalmaterialPhong;
+            metalmaterial = metalmaterialPhong;
+            glassmaterial = glassmaterialPhong;
 
             aux1 = 0;
         }
@@ -70,10 +72,10 @@ function onKeyDown(e) {
 
 
     case 49: //1
-        camera = ortho_camera;
+      camera = ortho_camera;
     	break;
     case 50: //2
-        camera = prespect_camera;
+      camera = prespect_camera;
 
     	break;
     case 51: //3

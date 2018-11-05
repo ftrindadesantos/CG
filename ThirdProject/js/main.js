@@ -1,6 +1,6 @@
-var camera, scene, renderer,  light, aux=0, aux1=0, metalmaterial, glassmaterial, plane;
+var camera, scene, renderer,  light, aux=0, aux1=0, planeObj, metalmaterial, glassmaterial, plane;
 
-
+var spotlight1, spotlight2, spotlight3, spotlight4;
 var ortho_camera, prespect_camera, follow_camera;
 var camera_height = 100;
 var camera_width = 160;
@@ -16,16 +16,27 @@ var direction = new THREE.Vector3(1,0,0);
 
 function createScene() {
     'use strict';
-    plane = new THREE.Object3D();
     scene = new THREE.Scene();
+
+    planeObj = new THREE.Object3D();
+    plane = new THREE.Object3D();
+    metalmaterial = new THREE.Object3D();
+    glassmaterial = new THREE.Object3D();
+
 
 
     scene.add(new THREE.AxisHelper(10));
 
     light = createLight();
     scene.add(light);
-    
 
+    var light2 = spotLight(20, 20, -20);
+    scene.add(light2);
+    
+    planeObj.add(plane);
+    planeObj.add(metalmaterial);
+    planeObj.add(glassmaterial);
+  
     setupMaterials();
     metalmaterial = metalmaterialPhong;
     glassmaterial = glassmaterialPhong;
@@ -35,7 +46,31 @@ function createScene() {
     prespect_camera = createPrespectiveCamera();
     camera = prespect_camera;
 
-    scene.add(plane); 
+    scene.add(planeObj); 
+
+    spotlight1 = createSpotLight( 20, 20, -20 );
+    spotlight1.rotateX(-0.3);
+    spotlight1.rotateZ(-0.3);
+
+
+    spotlight2 = createSpotLight( -20, 20, 20 );
+    spotlight2.rotateX(0.3);
+    spotlight2.rotateZ(0.3);
+  
+
+    spotlight3= createSpotLight( 20, 20, 20 );
+    spotlight3.rotateX(0.3);
+    spotlight3.rotateZ(-0.3);
+  
+
+    spotlight4 = createSpotLight( -20, 20, -20 );
+    spotlight4.rotateX(-0.3);
+    spotlight4.rotateZ(0.3);
+
+    scene.add(spotlight1);
+    scene.add(spotlight2);
+    scene.add(spotlight3);
+    scene.add(spotlight4);
 
 }
 
