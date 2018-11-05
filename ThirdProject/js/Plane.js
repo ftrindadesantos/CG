@@ -2,7 +2,7 @@ function createPlane(x, y, z) {
   'use strict';
   var planet = new THREE.Object3D();
   var planetemp = new THREE.Object3D();
-  material = new THREE.MeshBasicMaterial({ color: 0xbfbc9c, wireframe: true });
+  
 
   planet.userData = {direction: new THREE.Vector3(0,0,0),
                   speed: 0,

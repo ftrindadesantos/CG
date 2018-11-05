@@ -25,7 +25,7 @@ function onKeyDown(e) {
 
     case 78: //N
         if (aux == 0) {
-            light.intensity = 0.5;
+            light.intensity = 0;
             aux = 1;
         }
 

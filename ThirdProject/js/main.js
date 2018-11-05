@@ -23,10 +23,6 @@ function createScene() {
     scene = new THREE.Scene();
 
     plane = new THREE.Object3D();
-   
-    metalmaterial = new THREE.Object3D();
-    glassmaterial = new THREE.Object3D();
-
 
 
     scene.add(new THREE.AxisHelper(10));
@@ -38,8 +34,8 @@ function createScene() {
     glassmaterial = new THREE.MeshBasicMaterial({ color: 0x1a1a1a, wireframe: false });
     planeBasic = createPlane(0, 0, 0);
     
-  
     setupMaterials();
+    
     metalmaterial = metalmaterialPhong;
     glassmaterial = glassmaterialPhong;
     planePhong = createPlane(0,0,0);
